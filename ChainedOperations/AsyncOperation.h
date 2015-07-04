@@ -8,7 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, AsyncOperationState) {
+    AsyncOperationStateNone = 0,
+    AsyncOperationStateReady = 1,
+    AsyncOperationStateExecuting = 2,
+    AsyncOperationStateCancelled = 3,
+    AsyncOperationStateFinished = 4
+};
+
 @interface AsyncOperation : NSOperation
+
+@property (assign, nonatomic) AsyncOperationState state;
 
 /// Override
 - (void)executeWithCompletionBlock:(void (^)())completionBlock;

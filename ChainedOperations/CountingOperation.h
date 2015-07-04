@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CountingOperation : NSOperation
+#import "AsyncOperation.h"
 
-@property (copy, nonatomic) NSString *operationName;
+@interface CountingOperation : AsyncOperation
+
 @property (readonly, nonatomic) NSInteger amount;
 @property (readonly, nonatomic) NSInteger result;
 
-- (instancetype)initWithOperationName:(NSString *)operationName amount:(NSInteger)amount NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithName:(NSString *)name amount:(NSInteger)amount NS_DESIGNATED_INITIALIZER;
 
 @end

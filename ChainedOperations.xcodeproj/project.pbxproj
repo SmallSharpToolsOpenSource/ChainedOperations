@@ -134,12 +134,12 @@
 		2654B5FD1B47D7D90012FD65 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				2654B6051B47FB7E0012FD65 /* AsyncOperation.h */,
+				2654B6061B47FB7E0012FD65 /* AsyncOperation.m */,
 				2654B5FE1B47D80C0012FD65 /* DelayedOperation.h */,
 				2654B5FF1B47D80C0012FD65 /* DelayedOperation.m */,
 				2654B6021B47ECA80012FD65 /* CountingOperation.h */,
 				2654B6031B47ECA80012FD65 /* CountingOperation.m */,
-				2654B6051B47FB7E0012FD65 /* AsyncOperation.h */,
-				2654B6061B47FB7E0012FD65 /* AsyncOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";

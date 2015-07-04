@@ -10,20 +10,11 @@
 
 #import "Macros.h"
 
-typedef NS_ENUM(NSUInteger, OperationState) {
-    OperationStateNone = 0,
-    OperationStateReady = 1,
-    OperationStateExecuting = 2,
-    OperationStateCancelled = 3,
-    OperationStateFinished = 4
-};
-
 #pragma mark - Class Extension
 #pragma mark -
 
 @interface AsyncOperation ()
 
-@property (assign, nonatomic) OperationState state;
 
 @end
 
@@ -41,12 +32,12 @@ typedef NS_ENUM(NSUInteger, OperationState) {
 #pragma mark -
 
 - (void)start {
-    self.state = OperationStateExecuting;
+    self.state = AsyncOperationStateExecuting;
     
     [self executeWithCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.state != OperationStateCancelled) {
-                self.state = OperationStateFinished;
+            if (self.state != AsyncOperationStateCancelled) {
+                self.state = AsyncOperationStateFinished;
             }
         });
     }];
@@ -57,39 +48,39 @@ typedef NS_ENUM(NSUInteger, OperationState) {
 }
 
 - (BOOL)isExecuting {
-    return self.state == OperationStateExecuting;
+    return self.state == AsyncOperationStateExecuting;
 }
 
 - (BOOL)isFinished {
-    return self.state == OperationStateCancelled || self.state == OperationStateFinished;
+    return self.state == AsyncOperationStateCancelled || self.state == AsyncOperationStateFinished;
 }
 
 - (void)cancel {
-    self.state = OperationStateCancelled;
+    self.state = AsyncOperationStateCancelled;
 }
 
 
 #pragma mark - Private
 #pragma mark -
 
-- (void)setState:(OperationState)state {
+- (void)setState:(AsyncOperationState)state {
     if (_state != state) {
-        if (state == OperationStateReady) {
+        if (state == AsyncOperationStateReady) {
             [self willChangeValueForKey:@"isReady"];
             _state = state;
             [self didChangeValueForKey:@"isReady"];
         }
-        if (state == OperationStateExecuting) {
+        if (state == AsyncOperationStateExecuting) {
             [self willChangeValueForKey:@"isExecuting"];
             _state = state;
             [self didChangeValueForKey:@"isExecuting"];
         }
-        if (state == OperationStateCancelled) {
+        if (state == AsyncOperationStateCancelled) {
             [self willChangeValueForKey:@"isCancelled"];
             _state = state;
             [self didChangeValueForKey:@"isCancelled"];
         }
-        if (state == OperationStateFinished) {
+        if (state == AsyncOperationStateFinished) {
             [self willChangeValueForKey:@"isFinished"];
             _state = state;
             [self didChangeValueForKey:@"isFinished"];

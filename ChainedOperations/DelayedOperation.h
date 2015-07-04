@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DelayedOperation : NSOperation
+#import "AsyncOperation.h"
 
-@property (copy, nonatomic) NSString *operationName;
+@interface DelayedOperation : AsyncOperation
+
 @property (assign, nonatomic) NSUInteger delay;
 
-- (instancetype)initWithOperationName:(NSString *)operationName delay:(NSUInteger)delay NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithName:(NSString *)name delay:(NSUInteger)delay NS_DESIGNATED_INITIALIZER;
 
 @end

@@ -41,14 +41,14 @@
 - (void)executeDelayedOperations {
     self.label.text = @"Delay";
     
-    DelayedOperation *firstOperation = [[DelayedOperation alloc] initWithOperationName:@"First" delay:1];
+    DelayedOperation *firstOperation = [[DelayedOperation alloc] initWithName:@"First" delay:1];
     firstOperation.completionBlock = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             self.label.text = @"First finished";
         });
     };
     
-    DelayedOperation *secondOperation = [[DelayedOperation alloc] initWithOperationName:@"Second" delay:1];
+    DelayedOperation *secondOperation = [[DelayedOperation alloc] initWithName:@"Second" delay:1];
     secondOperation.completionBlock = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             self.label.text = @"Second finished";
@@ -56,7 +56,7 @@
     };
     [secondOperation addDependency:firstOperation];
     
-    DelayedOperation *thirdOperation = [[DelayedOperation alloc] initWithOperationName:@"Third" delay:1];
+    DelayedOperation *thirdOperation = [[DelayedOperation alloc] initWithName:@"Third" delay:1];
     thirdOperation.completionBlock = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             self.label.text = @"Third finished";
@@ -82,7 +82,7 @@
     for (NSUInteger i=0; i<amounts.count; i++) {
         NSInteger amount = [amounts[i] integerValue];
         total += amount;
-        CountingOperation *operation = [[CountingOperation alloc] initWithOperationName:[NSString stringWithFormat:@"%li", (long)i+1] amount:amount];
+        CountingOperation *operation = [[CountingOperation alloc] initWithName:[NSString stringWithFormat:@"%li", (long)i+1] amount:amount];
         operation.completionBlock = ^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (i < operations.count) {
