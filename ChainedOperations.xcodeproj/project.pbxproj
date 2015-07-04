@@ -14,6 +14,9 @@
 		2654B5E51B47D7D50012FD65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2654B5E41B47D7D50012FD65 /* Images.xcassets */; };
 		2654B5E81B47D7D50012FD65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2654B5E61B47D7D50012FD65 /* LaunchScreen.xib */; };
 		2654B5F41B47D7D50012FD65 /* ChainedOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2654B5F31B47D7D50012FD65 /* ChainedOperationsTests.m */; };
+		2654B6001B47D80C0012FD65 /* DelayedOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2654B5FF1B47D80C0012FD65 /* DelayedOperation.m */; };
+		2654B6041B47ECA80012FD65 /* CountingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2654B6031B47ECA80012FD65 /* CountingOperation.m */; };
+		2654B6071B47FB7E0012FD65 /* AsyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2654B6061B47FB7E0012FD65 /* AsyncOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,13 @@
 		2654B5ED1B47D7D50012FD65 /* ChainedOperationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChainedOperationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2654B5F21B47D7D50012FD65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2654B5F31B47D7D50012FD65 /* ChainedOperationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChainedOperationsTests.m; sourceTree = "<group>"; };
+		2654B5FE1B47D80C0012FD65 /* DelayedOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayedOperation.h; sourceTree = "<group>"; };
+		2654B5FF1B47D80C0012FD65 /* DelayedOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayedOperation.m; sourceTree = "<group>"; };
+		2654B6011B47E46E0012FD65 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		2654B6021B47ECA80012FD65 /* CountingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountingOperation.h; sourceTree = "<group>"; };
+		2654B6031B47ECA80012FD65 /* CountingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountingOperation.m; sourceTree = "<group>"; };
+		2654B6051B47FB7E0012FD65 /* AsyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncOperation.h; sourceTree = "<group>"; };
+		2654B6061B47FB7E0012FD65 /* AsyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,8 @@
 		2654B5D61B47D7D50012FD65 /* ChainedOperations */ = {
 			isa = PBXGroup;
 			children = (
+				2654B6011B47E46E0012FD65 /* Macros.h */,
+				2654B5FD1B47D7D90012FD65 /* Operations */,
 				2654B5DB1B47D7D50012FD65 /* AppDelegate.h */,
 				2654B5DC1B47D7D50012FD65 /* AppDelegate.m */,
 				2654B5DE1B47D7D50012FD65 /* ViewController.h */,
@@ -117,6 +129,19 @@
 				2654B5F21B47D7D50012FD65 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2654B5FD1B47D7D90012FD65 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				2654B5FE1B47D80C0012FD65 /* DelayedOperation.h */,
+				2654B5FF1B47D80C0012FD65 /* DelayedOperation.m */,
+				2654B6021B47ECA80012FD65 /* CountingOperation.h */,
+				2654B6031B47ECA80012FD65 /* CountingOperation.m */,
+				2654B6051B47FB7E0012FD65 /* AsyncOperation.h */,
+				2654B6061B47FB7E0012FD65 /* AsyncOperation.m */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2654B6071B47FB7E0012FD65 /* AsyncOperation.m in Sources */,
 				2654B5E01B47D7D50012FD65 /* ViewController.m in Sources */,
 				2654B5DD1B47D7D50012FD65 /* AppDelegate.m in Sources */,
+				2654B6041B47ECA80012FD65 /* CountingOperation.m in Sources */,
+				2654B6001B47D80C0012FD65 /* DelayedOperation.m in Sources */,
 				2654B5DA1B47D7D50012FD65 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
