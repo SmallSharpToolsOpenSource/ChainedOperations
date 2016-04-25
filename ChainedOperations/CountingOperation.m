@@ -25,6 +25,10 @@
 #pragma mark - Initialization
 #pragma mark -
 
+- (instancetype)init {
+    @throw nil;
+}
+
 - (instancetype)initWithName:(NSString *)name amount:(NSInteger)amount {
     self = [super init];
     if (self) {

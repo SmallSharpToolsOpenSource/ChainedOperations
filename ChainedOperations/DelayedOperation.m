@@ -24,6 +24,10 @@
 #pragma mark - Initialization
 #pragma mark -
 
+- (instancetype)init {
+    @throw nil;
+}
+
 - (instancetype)initWithName:(NSString *)name delay:(NSUInteger)delay {
     self = [super init];
     if (self) {

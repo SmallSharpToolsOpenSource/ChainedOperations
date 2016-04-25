@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Acme. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #import "AsyncOperation.h"
 
@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) NSInteger amount;
 @property (readonly, nonatomic) NSInteger result;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithName:(NSString *)name amount:(NSInteger)amount NS_DESIGNATED_INITIALIZER;
 
 @end

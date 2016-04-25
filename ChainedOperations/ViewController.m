@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
+
 @end
 
 @implementation ViewController
@@ -30,12 +32,20 @@
     [super viewDidAppear:animated];
 }
 
-- (IBAction)delayButtonTapped:(id)sender {
+- (IBAction)delayingButtonTapped:(id)sender {
     [self executeDelayedOperations];
 }
 
 - (IBAction)countingButtonTapped:(id)sender {
     [self executeCountingOperations];
+}
+
+- (IBAction)blocksButtonTapped:(id)sender {
+    [self executeBlocksOperations];
+}
+
+- (IBAction)singularButtonTapped:(id)sender {
+    [self executeSingularOperations];
 }
 
 - (void)executeDelayedOperations {
@@ -104,12 +114,79 @@
         }
         
         [operations addObject:operation];
-        
     }
     
     for (NSOperation *operation in operations) {
         [[NSOperationQueue mainQueue] addOperation:operation];
     }
+}
+
+- (void)executeBlocksOperations {
+    self.label.text = @"Blocks";
+    
+    NSBlockOperation *firstBlockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        [NSThread sleepForTimeInterval:1];
+        self.label.text = @"First";
+    }];
+    
+    NSBlockOperation *secondBlockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        [NSThread sleepForTimeInterval:1];
+        self.label.text = @"Second";
+    }];
+    [secondBlockOperation addDependency:firstBlockOperation];
+
+    NSBlockOperation *thirdBlockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        [NSThread sleepForTimeInterval:1];
+        self.label.text = @"Third";
+    }];
+    [thirdBlockOperation addDependency:secondBlockOperation];
+    
+    [[NSOperationQueue mainQueue] addOperation:firstBlockOperation];
+    [[NSOperationQueue mainQueue] addOperation:secondBlockOperation];
+    [[NSOperationQueue mainQueue] addOperation:thirdBlockOperation];
+}
+
+- (void)executeSingularOperations {
+    self.label.text = @"Singular";
+    
+    NSBlockOperation *firstBlockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        [NSThread sleepForTimeInterval:1];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.label.text = @"First";
+        });
+    }];
+    
+    NSBlockOperation *secondBlockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        [NSThread sleepForTimeInterval:1];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.label.text = @"Second";
+        });
+    }];
+    
+    NSBlockOperation *thirdBlockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        [NSThread sleepForTimeInterval:1];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.label.text = @"Third";
+        });
+    }];
+
+    NSOperationQueue *queue = [self singularQueue];
+    [queue addOperation:firstBlockOperation];
+    [queue addOperation:secondBlockOperation];
+    [queue addOperation:thirdBlockOperation];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        MAAssert(queue != nil, @"queue must not be nil");
+    });
+}
+
+- (NSOperationQueue *)singularQueue {
+    if (!self.operationQueue) {
+        self.operationQueue = [[NSOperationQueue alloc] init];
+        self.operationQueue.maxConcurrentOperationCount = 1;
+    }
+
+    return self.operationQueue;
 }
 
 @end

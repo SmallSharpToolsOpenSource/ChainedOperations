@@ -50,6 +50,9 @@
 		2654B6031B47ECA80012FD65 /* CountingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountingOperation.m; sourceTree = "<group>"; };
 		2654B6051B47FB7E0012FD65 /* AsyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncOperation.h; sourceTree = "<group>"; };
 		2654B6061B47FB7E0012FD65 /* AsyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncOperation.m; sourceTree = "<group>"; };
+		2694A2B21B4B9D080079FA76 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2694A2B41B4B9D0D0079FA76 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2694A2B61B4B9D150079FA76 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +73,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2623D6171CC0B784004351D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2694A2B61B4B9D150079FA76 /* QuartzCore.framework */,
+				2694A2B41B4B9D0D0079FA76 /* Foundation.framework */,
+				2694A2B21B4B9D080079FA76 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2654B5CB1B47D7D50012FD65 = {
 			isa = PBXGroup;
 			children = (
 				2654B5D61B47D7D50012FD65 /* ChainedOperations */,
 				2654B5F01B47D7D50012FD65 /* ChainedOperationsTests */,
+				2623D6171CC0B784004351D2 /* Frameworks */,
 				2654B5D51B47D7D50012FD65 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,8 +105,8 @@
 		2654B5D61B47D7D50012FD65 /* ChainedOperations */ = {
 			isa = PBXGroup;
 			children = (
-				2654B6011B47E46E0012FD65 /* Macros.h */,
 				2654B5FD1B47D7D90012FD65 /* Operations */,
+				2654B6011B47E46E0012FD65 /* Macros.h */,
 				2654B5DB1B47D7D50012FD65 /* AppDelegate.h */,
 				2654B5DC1B47D7D50012FD65 /* AppDelegate.m */,
 				2654B5DE1B47D7D50012FD65 /* ViewController.h */,
@@ -188,7 +202,7 @@
 		2654B5CC1B47D7D50012FD65 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Acme;
 				TargetAttributes = {
 					2654B5D31B47D7D50012FD65 = {
@@ -312,6 +326,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,6 +392,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChainedOperations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acme.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -387,6 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChainedOperations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acme.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -395,16 +412,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ChainedOperationsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acme.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChainedOperations.app/ChainedOperations";
 			};
@@ -414,12 +429,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ChainedOperationsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acme.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChainedOperations.app/ChainedOperations";
 			};
@@ -444,6 +457,7 @@
 				2654B5F91B47D7D50012FD65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2654B5FA1B47D7D50012FD65 /* Build configuration list for PBXNativeTarget "ChainedOperationsTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +466,7 @@
 				2654B5FC1B47D7D50012FD65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

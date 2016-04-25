@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Acme. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #import "AsyncOperation.h"
 
@@ -14,6 +14,7 @@
 
 @property (assign, nonatomic) NSUInteger delay;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithName:(NSString *)name delay:(NSUInteger)delay NS_DESIGNATED_INITIALIZER;
 
 @end

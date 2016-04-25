@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Acme. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 typedef NS_ENUM(NSUInteger, AsyncOperationState) {
     AsyncOperationStateNone = 0,

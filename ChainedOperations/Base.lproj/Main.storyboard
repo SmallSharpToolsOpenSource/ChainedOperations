@@ -23,35 +23,59 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYG-3o-JG7">
-                                <rect key="frame" x="16" y="562" width="280" height="30"/>
-                                <state key="normal" title="Delay Operations">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYG-3o-JG7" userLabel="Delaying Button">
+                                <rect key="frame" x="16" y="562" width="138" height="30"/>
+                                <state key="normal" title="Delaying">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="delayButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hIY-tf-F0b"/>
+                                    <action selector="delayingButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dKS-Vi-q2r"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbR-AB-Swa">
-                                <rect key="frame" x="304" y="562" width="280" height="30"/>
-                                <state key="normal" title="Counting Operations">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbR-AB-Swa" userLabel="Counting Button">
+                                <rect key="frame" x="161.5" y="562" width="138.5" height="30"/>
+                                <state key="normal" title="Counting">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="countingButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="a5g-J1-hRc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doe-EI-kKx" userLabel="Blocking Button">
+                                <rect key="frame" x="308" y="562" width="138" height="30"/>
+                                <state key="normal" title="Blocking">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="blocksButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j4u-l0-cgW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik2-ca-jPY" userLabel="Singular Button">
+                                <rect key="frame" x="454" y="562" width="138" height="30"/>
+                                <state key="normal" title="Singular">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="singularButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gtu-az-eNe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gbR-AB-Swa" firstAttribute="width" secondItem="DYG-3o-JG7" secondAttribute="width" id="3pA-a6-rJv"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Doe-EI-kKx" secondAttribute="bottom" constant="8" id="5Uy-tH-QbO"/>
+                            <constraint firstItem="Ik2-ca-jPY" firstAttribute="width" secondItem="Doe-EI-kKx" secondAttribute="width" id="ChX-X6-1px"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ik2-ca-jPY" secondAttribute="bottom" constant="8" id="Eb3-Py-zmA"/>
+                            <constraint firstItem="Doe-EI-kKx" firstAttribute="leading" secondItem="gbR-AB-Swa" secondAttribute="trailing" constant="8" id="Gi9-Ti-313"/>
+                            <constraint firstItem="Ik2-ca-jPY" firstAttribute="leading" secondItem="Doe-EI-kKx" secondAttribute="trailing" constant="8" id="Gul-vv-C9P"/>
                             <constraint firstItem="gbR-AB-Swa" firstAttribute="leading" secondItem="DYG-3o-JG7" secondAttribute="trailing" constant="8" id="Igb-W0-36Z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gbR-AB-Swa" secondAttribute="trailing" id="NdD-FL-gxQ"/>
                             <constraint firstItem="DYG-3o-JG7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ant-RU-Goz"/>
                             <constraint firstAttribute="centerY" secondItem="sFF-p9-4wp" secondAttribute="centerY" id="dAL-fH-0et"/>
                             <constraint firstAttribute="centerX" secondItem="sFF-p9-4wp" secondAttribute="centerX" id="jQE-kf-0u1"/>
+                            <constraint firstItem="Ik2-ca-jPY" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="8" id="uYa-2x-dK0"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="gbR-AB-Swa" secondAttribute="bottom" constant="8" id="uth-Ib-PFE"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DYG-3o-JG7" secondAttribute="bottom" constant="8" id="vAq-0p-rOZ"/>
+                            <constraint firstItem="Doe-EI-kKx" firstAttribute="width" secondItem="gbR-AB-Swa" secondAttribute="width" id="vQG-BJ-Ccd"/>
                         </constraints>
                     </view>
                     <connections>

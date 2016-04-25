@@ -63,27 +63,32 @@
 #pragma mark - Private
 #pragma mark -
 
+#define kIsReady        @"isReady"
+#define kIsExecuting    @"isExecuting"
+#define kIsCancelled    @"isCancelled"
+#define kIsFinished     @"isFinished"
+
 - (void)setState:(AsyncOperationState)state {
     if (_state != state) {
         if (state == AsyncOperationStateReady) {
-            [self willChangeValueForKey:@"isReady"];
+            [self willChangeValueForKey:kIsReady];
             _state = state;
-            [self didChangeValueForKey:@"isReady"];
+            [self didChangeValueForKey:kIsReady];
         }
-        if (state == AsyncOperationStateExecuting) {
-            [self willChangeValueForKey:@"isExecuting"];
+        else if (state == AsyncOperationStateExecuting) {
+            [self willChangeValueForKey:kIsExecuting];
             _state = state;
-            [self didChangeValueForKey:@"isExecuting"];
+            [self didChangeValueForKey:kIsExecuting];
         }
-        if (state == AsyncOperationStateCancelled) {
-            [self willChangeValueForKey:@"isCancelled"];
+        else if (state == AsyncOperationStateCancelled) {
+            [self willChangeValueForKey:kIsCancelled];
             _state = state;
-            [self didChangeValueForKey:@"isCancelled"];
+            [self didChangeValueForKey:kIsCancelled];
         }
-        if (state == AsyncOperationStateFinished) {
-            [self willChangeValueForKey:@"isFinished"];
+        else if (state == AsyncOperationStateFinished) {
+            [self willChangeValueForKey:kIsFinished];
             _state = state;
-            [self didChangeValueForKey:@"isFinished"];
+            [self didChangeValueForKey:kIsFinished];
         }
     }
 }
