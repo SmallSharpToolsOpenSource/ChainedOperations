@@ -6,10 +6,8 @@
 //  Copyright (c) 2015 Acme. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface ViewController : UIViewController
 
-
 @end
-
